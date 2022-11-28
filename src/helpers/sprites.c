@@ -9,12 +9,13 @@
 #include <stdlib.h>
 #include "../../include/bsmyhunter.h"
 
-sprite_t *create_sprite(char *path, int nb_s, float anim_speed, sfVector2f pos)
+sprite_t *create_sprite(sfTexture *texture, int nb_s,
+                        float anim_speed, sfVector2f pos)
 {
     sprite_t *sprite = malloc(sizeof(sprite_t));
 
     sprite->sprite = sfSprite_create();
-    sprite->texture = sfTexture_createFromFile(path, NULL);
+    sprite->texture = texture;
     sprite->width = get_texture_width(sprite->texture);
     sprite->height = get_texture_height(sprite->texture);
     sprite->size = sprite->width / nb_s;
@@ -49,14 +50,8 @@ void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock)
     }
 }
 
-sprite_t *create_pigeon(sfVector2f pos)
+void spawn_sprite(linked_t **sprites, sfVector2f pos, sfTexture *texture)
 {
-    sprite_t *pigeon = create_sprite("assets/pigeon.png", 3, 0.2, pos);
-    return (pigeon);
-}
-
-void spawn_pigeon(linked_t **sprites, sfVector2f pos)
-{
-    sprite_t *pigeon = create_pigeon(pos);
-    add_in_linked(sprites, pigeon);
+    sprite_t *sprite = create_sprite(texture, 3, 0.2, pos);
+    add_in_linked(sprites, sprite);
 }

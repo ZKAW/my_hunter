@@ -15,11 +15,11 @@ int my_hunter(void)
     sfRenderWindow *window = create_window();
     sfClock *clock = sfClock_create();
     sfSprite *background = create_background("assets/background.png");
+    sfTexture *pigeon = sfTexture_createFromFile("assets/pigeon.png", NULL);
     linked_t *sprites = NULL;
 
-    spawn_pigeon(&sprites, (sfVector2f) {0, 0});
-    spawn_pigeon(&sprites, (sfVector2f) {110, 0});
-    spawn_pigeon(&sprites, (sfVector2f) {220, 0});
+    spawn_sprite(&sprites, (sfVector2f) {0, 0}, pigeon);
+    spawn_sprite(&sprites, (sfVector2f) {110, 0}, pigeon);
 
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfBlack);

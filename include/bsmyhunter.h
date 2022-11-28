@@ -35,7 +35,8 @@ void close_window(sfRenderWindow *window);
 int my_hunter(void);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 sfSprite *open_sprite(char *path);
-sprite_t *create_sprite(char *path, int nb_s, float anim_speed, sfVector2f pos);
+sprite_t *create_sprite(sfTexture *texture, int nb_s,
+                        float anim_speed, sfVector2f pos);
 void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock);
 void add_in_linked(linked_t **begin, sprite_t *data);
 float get_time(sfClock *clock);
@@ -43,7 +44,7 @@ int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
 void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
 sfSprite *create_background(char *path);
-sprite_t *create_pigeon(sfVector2f pos);
-void spawn_pigeon(linked_t **sprites, sfVector2f pos);
+sfTexture *create_pigeon(char *path);
+void spawn_sprite(linked_t **sprites, sfVector2f pos, sfTexture *texture);
 
 #endif /* !BSMYHUNTER_H_ */
