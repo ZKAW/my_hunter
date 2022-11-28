@@ -12,3 +12,4 @@ libmy.a
 /tests_ls
 /*.bckp
 /my_hunter
+.gitignore
