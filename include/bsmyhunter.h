@@ -35,7 +35,11 @@ void close_window(sfRenderWindow *window);
 int my_hunter(void);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 sfSprite *open_sprite(char *path);
-sfIntRect create_rect(int top, int left, int width, int height);
+sprite_t *create_sprite(char *path, int nb_s, float anim_speed, sfVector2f pos);
+void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock);
 void add_in_linked(linked_t **begin, sprite_t *data);
+float get_time(sfClock *clock);
+int get_texture_width(sfTexture *texture);
+int get_texture_height(sfTexture *texture);
 
 #endif /* !BSMYHUNTER_H_ */

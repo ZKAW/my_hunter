@@ -13,6 +13,8 @@ SRC	= src/main.c \
 	src/helpers/events.c \
 	src/helpers/sprites.c \
 	src/helpers/linked.c \
+	src/helpers/clock.c \
+	src/helpers/texture.c \
 
 OBJ	= $(SRC:.c=.o)
 
