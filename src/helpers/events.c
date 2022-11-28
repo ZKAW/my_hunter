@@ -16,8 +16,11 @@ void manage_mouse_click(sfMouseButtonEvent event, linked_t *sprites)
     linked_t *tmp = sprites;
     while (tmp != NULL) {
         sfFloatRect rect = sfSprite_getGlobalBounds(tmp->data->sprite);
-        if (sfFloatRect_contains(&rect, x, y))
+        if (sfFloatRect_contains(&rect, x, y)) {
             printf("You clicked on the sprite!\n");
+            remove_from_linked(&sprites, tmp->data);
+            break;
+        }
         tmp = tmp->next;
     }
 

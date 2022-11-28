@@ -46,5 +46,6 @@ void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
 sfSprite *create_background(char *path);
 sfTexture *create_pigeon(char *path);
 void spawn_sprite(linked_t **sprites, sfVector2f pos, sfTexture *texture);
+void remove_from_linked(linked_t **begin, sprite_t *data);
 
 #endif /* !BSMYHUNTER_H_ */

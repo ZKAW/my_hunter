@@ -14,9 +14,9 @@ int my_hunter(void)
     sfEvent event;
     sfRenderWindow *window = create_window();
     sfClock *clock = sfClock_create();
+    linked_t *sprites = NULL;
     sfSprite *background = create_background("assets/background.png");
     sfTexture *pigeon = sfTexture_createFromFile("assets/pigeon.png", NULL);
-    linked_t *sprites = NULL;
 
     spawn_sprite(&sprites, (sfVector2f) {0, 0}, pigeon);
     spawn_sprite(&sprites, (sfVector2f) {110, 0}, pigeon);

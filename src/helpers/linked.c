@@ -23,3 +23,27 @@ void add_in_linked(linked_t **begin, sprite_t *data)
         tmp = tmp->next;
     tmp->next = new;
 }
+
+void remove_from_linked(linked_t **begin, sprite_t *data)
+{
+    linked_t *tmp = *begin;
+    linked_t *prev = NULL;
+
+    if (tmp->data == data) {
+        tmp->data->pos.x = -150;
+        tmp->data->pos.y = -150;
+        sfSprite_setPosition(tmp->data->sprite, tmp->data->pos);
+        return;
+    }
+
+    while (tmp != NULL && tmp->data != data) {
+        prev = tmp;
+        tmp = tmp->next;
+    }
+
+    if (tmp == NULL)
+        return;
+
+    prev->next = tmp->next;
+    free(tmp);
+}
