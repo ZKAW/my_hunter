@@ -48,3 +48,15 @@ void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock)
         sprites = sprites->next;
     }
 }
+
+sprite_t *create_pigeon(sfVector2f pos)
+{
+    sprite_t *pigeon = create_sprite("assets/pigeon.png", 3, 0.2, pos);
+    return (pigeon);
+}
+
+void spawn_pigeon(linked_t **sprites, sfVector2f pos)
+{
+    sprite_t *pigeon = create_pigeon(pos);
+    add_in_linked(sprites, pigeon);
+}

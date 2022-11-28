@@ -29,3 +29,13 @@ int get_texture_height(sfTexture *texture)
 
     return (size.y - 1);
 }
+
+sfSprite *create_background(char *path)
+{
+    sfTexture *texture = sfTexture_createFromFile(path, NULL);
+    sfSprite *sprite = sfSprite_create();
+
+    sfSprite_setScale(sprite, (sfVector2f) {1.2, 1.2});
+    sfSprite_setTexture(sprite, texture, sfTrue);
+    return (sprite);
+}

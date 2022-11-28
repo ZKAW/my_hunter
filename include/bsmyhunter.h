@@ -29,7 +29,7 @@ typedef struct linked_t {
     struct linked_t *next;
 } linked_t;
 
-void analyse_events(sfRenderWindow *window, sfEvent event, sfSprite *sprite);
+void analyse_events(sfRenderWindow *window, sfEvent event, linked_t *sprites);
 sfRenderWindow *create_window(void);
 void close_window(sfRenderWindow *window);
 int my_hunter(void);
@@ -42,5 +42,8 @@ float get_time(sfClock *clock);
 int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
 void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
+sfSprite *create_background(char *path);
+sprite_t *create_pigeon(sfVector2f pos);
+void spawn_pigeon(linked_t **sprites, sfVector2f pos);
 
 #endif /* !BSMYHUNTER_H_ */
