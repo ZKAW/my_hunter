@@ -1,0 +1,14 @@
+*.out
+style_output
+*.swo
+*.gcdo
+*.gcda
+*.gcno
+*.log
+libmy.a
+*.o
+.vscode
+/my_ls
+/tests_ls
+/*.bckp
+/my_hunter
