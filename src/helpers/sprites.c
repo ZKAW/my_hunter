@@ -40,3 +40,11 @@ void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock)
         sprite->elasped_time = time_s;
     }
 }
+
+void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock)
+{
+    while (sprites != NULL) {
+        display_sprite(window, sprites->data, clock);
+        sprites = sprites->next;
+    }
+}

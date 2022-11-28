@@ -41,5 +41,6 @@ void add_in_linked(linked_t **begin, sprite_t *data);
 float get_time(sfClock *clock);
 int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
+void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
 
 #endif /* !BSMYHUNTER_H_ */
