@@ -5,7 +5,7 @@
 ** window
 */
 
-#include "../../include/bsmyhunter.h"
+#include "../../include/myhunter.h"
 
 sfRenderWindow *create_window(void)
 {

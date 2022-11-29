@@ -5,7 +5,7 @@
 ** linked
 */
 
-#include "../../include/bsmyhunter.h"
+#include "../../include/myhunter.h"
 #include <stdlib.h>
 
 void add_in_linked(linked_t **begin, sprite_t *data)

@@ -5,7 +5,7 @@
 ** clock
 */
 
-#include "../../include/bsmyhunter.h"
+#include "../../include/myhunter.h"
 
 float get_time(sfClock *clock)
 {

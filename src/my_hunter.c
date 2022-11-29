@@ -5,7 +5,7 @@
 ** my_hunter
 */
 
-#include "../include/bsmyhunter.h"
+#include "../include/myhunter.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,11 +15,12 @@ int my_hunter(void)
     sfRenderWindow *window = create_window();
     sfClock *clock = sfClock_create();
     linked_t *sprites = NULL;
-    sfSprite *background = create_background("assets/background.png");
-    sfTexture *pigeon = sfTexture_createFromFile("assets/pigeon.png", NULL);
+    sfSprite *background = create_background(BACKGROUND_S);
+    sfTexture *pigeon = sfTexture_createFromFile(PIGEON_S, NULL);
 
-    spawn_sprite(&sprites, (sfVector2f) {0, 0}, pigeon);
-    spawn_sprite(&sprites, (sfVector2f) {110, 0}, pigeon);
+    spawn_sprite(&sprites, (sfVector2f) {0, 0}, pigeon, 3);
+    spawn_sprite(&sprites, (sfVector2f) {0, 110}, pigeon, 5);
+    spawn_sprite(&sprites, (sfVector2f) {0, 330}, pigeon, 7);
 
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfBlack);

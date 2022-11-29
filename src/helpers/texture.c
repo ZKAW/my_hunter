@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../include/bsmyhunter.h"
+#include "../../include/myhunter.h"
 
 void move_rect(sfIntRect *rect, int offset, int max_value)
 {

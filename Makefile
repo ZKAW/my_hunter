@@ -19,16 +19,18 @@ SRC	= src/main.c \
 OBJ	= $(SRC:.c=.o)
 
 LIBFLAG	= -Wall -Wextra -lcsfml-graphics -lcsfml-window \
-		-lcsfml-system -lcsfml-audio
+		-lcsfml-system -lcsfml-audio -lmy -L./lib/my
 
 all: $(NAME)
 $(NAME):
+	make -C lib/my
 	$(CC) -o $(NAME) $(SRC) $(LIBFLAG) -g
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
+	make fclean -C lib/my
 	rm -f $(NAME)
 
 re: fclean all
@@ -36,3 +38,7 @@ re: fclean all
 cstyle:
 	make fclean
 	cstyle
+
+start:
+	make re
+	./my_hunter

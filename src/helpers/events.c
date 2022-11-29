@@ -6,7 +6,7 @@
 */
 
 #include <stdio.h>
-#include "../../include/bsmyhunter.h"
+#include "../../include/myhunter.h"
 
 void manage_mouse_click(sfMouseButtonEvent event, linked_t *sprites)
 {

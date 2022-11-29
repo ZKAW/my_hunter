@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "../include/bsmyhunter.h"
+#include "../include/myhunter.h"
 
 int main(void)
 {
