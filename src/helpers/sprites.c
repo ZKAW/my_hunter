@@ -42,20 +42,21 @@ void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock)
         sfSprite_setTextureRect(sprite->sprite, sprite->rect);
         sprite->elasped_time = time_s;
     }
-    sprite->pos.x += sprite->move_speed;
-    sfSprite_setPosition(sprite->sprite, sprite->pos);
 }
 
 void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock)
 {
     while (sprites != NULL) {
-        if (sprites->data->pos.y > -150)
+        if (sprites->data->pos.y > -150) {
             display_sprite(window, sprites->data, clock);
+            sprites->data->pos.x += sprites->data->move_speed;
+            sfSprite_setPosition(sprites->data->sprite, sprites->data->pos);
+        }
         sprites = sprites->next;
     }
 }
 
-void spawn_sprite(linked_t **sprites, sfVector2f pos, sfTexture *texture,
+void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
                 float move_speed)
 {
     sprite_t *sprite = create_sprite(texture, 3, move_speed, pos);

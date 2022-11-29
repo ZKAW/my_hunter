@@ -17,6 +17,7 @@ SRC = my_pow.c \
 	my_putstr_err.c \
 	my_intlen.c \
 	my_putnbr_base.c \
+	my_itoa.c \
 	my_itoa_base.c \
 	count_nbr_digits.c \
 	my_round.c \

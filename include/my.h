@@ -34,6 +34,7 @@ int my_doublelen(double nb);
 int my_doublelen_nt(double nb);
 int my_putnbr_base(int nbr, char const *base);
 int my_putnbr_base_unsigned(unsigned int nbr, char const *base);
+char *my_itoa(int nbr);
 char *my_itoa_base(int nbr, char const *base, int i);
 char *my_itoa_base_unsigned(unsigned int nbr, char const *base, int i);
 char *my_itoa_base_unsigned_long(unsigned long nbr, char const *base, int i);

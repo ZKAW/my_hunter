@@ -12,24 +12,22 @@
 int my_hunter(void)
 {
     sfEvent event;
-    sfRenderWindow *window = create_window();
-    sfClock *clock = sfClock_create();
-    linked_t *sprites = NULL;
-    sfSprite *background = create_background(BACKGROUND_S);
-    sfTexture *pigeon = sfTexture_createFromFile(PIGEON_S, NULL);
+    game_t *game = create_game();
 
-    spawn_sprite(&sprites, (sfVector2f) {0, 0}, pigeon, 3);
-    spawn_sprite(&sprites, (sfVector2f) {0, 110}, pigeon, 5);
-    spawn_sprite(&sprites, (sfVector2f) {0, 330}, pigeon, 7);
+    spawn_sprite(&game->sprites, game->pigeon, (sfVector2f) {0, 0}, 3);
+    spawn_sprite(&game->sprites, game->pigeon, (sfVector2f) {0, 110}, 3);
+    spawn_sprite(&game->sprites, game->pigeon, (sfVector2f) {0, 330}, 3);
 
-    while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_clear(window, sfBlack);
-        sfRenderWindow_drawSprite(window, background, NULL);
-        display_sprites(sprites, window, clock);
-        while (sfRenderWindow_pollEvent(window, &event))
-            analyse_events(window, event, sprites);
-        sfRenderWindow_display(window);
+    while (sfRenderWindow_isOpen(game->window)) {
+        sfRenderWindow_clear(game->window, sfBlack);
+        sfRenderWindow_drawSprite(game->window, game->background, NULL);
+        display_score(game->window, game->score);
+        display_sprites(game->sprites, game->window, game->clock);
+        while (sfRenderWindow_pollEvent(game->window, &event))
+            analyse_events(game, event);
+        sfRenderWindow_display(game->window);
     }
-    close_window(window);
+
+    sfRenderWindow_destroy(game->window);
     return (0);
 }

@@ -10,8 +10,9 @@
     #include <SFML/Audio.h>
     #include <SFML/Graphics.h>
 
-    #define PIGEON_S "assets/pigeon.png"
-    #define BACKGROUND_S "assets/background.png"
+    #define PIGEON_P "assets/pigeon.png"
+    #define BACKGROUND_P "assets/background2.png"
+    #define FONT_P "assets/font.ttf"
 
 typedef struct sprite_t {
     sfSprite *sprite;
@@ -34,10 +35,20 @@ typedef struct linked_t {
     struct linked_t *next;
 } linked_t;
 
+typedef struct game_t {
+    sfRenderWindow *window;
+    sfSprite *background;
+    sfTexture *pigeon;
+    sfEvent event;
+    sfClock *clock;
+    linked_t *sprites;
+    int score;
+    int lives;
+} game_t;
+
 int my_hunter(void);
-void analyse_events(sfRenderWindow *window, sfEvent event, linked_t *sprites);
+void analyse_events(game_t *game, sfEvent event);
 sfRenderWindow *create_window(void);
-void close_window(sfRenderWindow *window);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 sprite_t *create_sprite(sfTexture *texture, int nb_frames,
                         float move_speed, sfVector2f pos);
@@ -49,8 +60,15 @@ int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
 void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
 sfTexture *create_pigeon(char *path);
-void spawn_sprite(linked_t **sprites, sfVector2f pos, sfTexture *texture,
+void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
                 float move_speed);
 void remove_from_linked(linked_t **begin, sprite_t *data);
+void set_cursor(sfRenderWindow *window, char *path);
+void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size);
+int get_window_width(sfRenderWindow *window);
+int get_window_height(sfRenderWindow *window);
+void display_score(sfRenderWindow *window, int score);
+void move_sprite(sprite_t *sprite, sfVector2f pos, sfClock *clock);
+game_t *create_game(void);
 
 #endif /* !BSMYHUNTER_H_ */

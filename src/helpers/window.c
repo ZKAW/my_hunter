@@ -18,7 +18,14 @@ sfRenderWindow *create_window(void)
     return (window);
 }
 
-void close_window(sfRenderWindow *window)
+int get_window_width(sfRenderWindow *window)
 {
-    sfRenderWindow_close(window);
+    sfVector2u size = sfRenderWindow_getSize(window);
+    return (size.x);
+}
+
+int get_window_height(sfRenderWindow *window)
+{
+    sfVector2u size = sfRenderWindow_getSize(window);
+    return (size.y);
 }
