@@ -13,7 +13,8 @@ sfRenderWindow *create_window(void)
     sfRenderWindow *window;
     char *w_title = "Kill The Suk";
 
-    window = sfRenderWindow_create(mode, w_title, sfResize | sfClose, NULL);
+    sfUint32 style = sfClose | sfTitlebar;
+    window = sfRenderWindow_create(mode, w_title, style, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     return (window);
 }
