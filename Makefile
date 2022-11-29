@@ -1,6 +1,6 @@
 ##
 ## EPITECH PROJECT, 2022
-## bsmyhunter
+## my_hunter
 ## File description:
 ## Makefile
 ##

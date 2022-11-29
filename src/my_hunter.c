@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** bsmyhunter
+** my_hunter
 ** File description:
 ** my_hunter
 */
@@ -14,13 +14,10 @@ int my_hunter(void)
     sfEvent event;
     game_t *game = create_game();
 
-    spawn_sprite(&game->sprites, game->pigeon, (sfVector2f) {0, 0}, 3);
-    spawn_sprite(&game->sprites, game->pigeon, (sfVector2f) {0, 110}, 3);
-    spawn_sprite(&game->sprites, game->pigeon, (sfVector2f) {0, 330}, 3);
-
     while (sfRenderWindow_isOpen(game->window)) {
         sfRenderWindow_clear(game->window, sfBlack);
         sfRenderWindow_drawSprite(game->window, game->background, NULL);
+        spawn_sprites(game);
         display_score(game->window, game->score);
         display_sprites(game->sprites, game->window, game->clock);
         while (sfRenderWindow_pollEvent(game->window, &event))

@@ -26,6 +26,8 @@ sprite_t *create_sprite(sfTexture *texture, int nb_frames,
     sprite->origin = (sfVector2f) {0, 0};
     sprite->anim_speed = 0.2;
     sprite->move_speed = move_speed;
+    sprite->elapsed_time = 0;
+    sprite->move_time = 0;
 
     sfSprite_setTexture(sprite->sprite, sprite->texture, sfTrue);
     sfSprite_setTextureRect(sprite->sprite, sprite->rect);
@@ -37,10 +39,10 @@ void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock)
 {
     sfRenderWindow_drawSprite(window, sprite->sprite, NULL);
     float time_s = get_time(clock);
-    if ((time_s - sprite->elasped_time) > sprite->anim_speed) {
+    if ((time_s - sprite->elapsed_time) > sprite->anim_speed) {
         move_rect(&sprite->rect, sprite->size, sprite->width);
         sfSprite_setTextureRect(sprite->sprite, sprite->rect);
-        sprite->elasped_time = time_s;
+        sprite->elapsed_time = time_s;
     }
 }
 
@@ -61,4 +63,15 @@ void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
 {
     sprite_t *sprite = create_sprite(texture, 3, move_speed, pos);
     add_in_linked(sprites, sprite);
+}
+
+void spawn_sprites(game_t *game)
+{
+    float time_s = get_time(game->clock);
+    float interval = get_rand_float(2, 5);
+    float speed = get_rand_float(1, 6);
+    if ((time_s - game->spawn_time) > interval) {
+        spawn_sprite(&game->sprites, game->pigeon, get_rand_spawn(), speed);
+        game->spawn_time = time_s;
+    }
 }

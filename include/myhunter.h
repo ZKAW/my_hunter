@@ -1,12 +1,12 @@
 /*
 ** EPITECH PROJECT, 2022
-** bsmyhunter
+** my_hunter
 ** File description:
-** bsmyhunter
+** my_hunter
 */
 
-#ifndef BSMYHUNTER_H_
-    #define BSMYHUNTER_H_
+#ifndef my_hunter_H_
+    #define my_hunter_H_
     #include <SFML/Audio.h>
     #include <SFML/Graphics.h>
 
@@ -24,7 +24,7 @@ typedef struct sprite_t {
     int width;
     int height;
     float anim_speed;
-    float elasped_time;
+    float elapsed_time;
     float move_speed;
     float move_time;
     int size;
@@ -42,11 +42,13 @@ typedef struct game_t {
     sfEvent event;
     sfClock *clock;
     linked_t *sprites;
+    float spawn_time;
     int score;
     int lives;
 } game_t;
 
 int my_hunter(void);
+game_t *create_game(void);
 void analyse_events(game_t *game, sfEvent event);
 sfRenderWindow *create_window(void);
 void move_rect(sfIntRect *rect, int offset, int max_value);
@@ -69,6 +71,9 @@ int get_window_width(sfRenderWindow *window);
 int get_window_height(sfRenderWindow *window);
 void display_score(sfRenderWindow *window, int score);
 void move_sprite(sprite_t *sprite, sfVector2f pos, sfClock *clock);
-game_t *create_game(void);
+void spawn_sprites(game_t *game);
+sfVector2f get_rand_spawn(void);
+int get_rand_int(int min, int max);
+float get_rand_float(float min, float max);
 
-#endif /* !BSMYHUNTER_H_ */
+#endif /* !my_hunter_H_ */
