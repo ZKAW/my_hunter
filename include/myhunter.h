@@ -9,8 +9,9 @@
     #define my_hunter_H_
     #include <SFML/Audio.h>
     #include <SFML/Graphics.h>
+    #include "settings.h"
 
-    #define PIGEON_P "assets/pigeon.png"
+    #define SUK_P "assets/suk_sprite.png"
     #define BACKGROUND_P "assets/background2.png"
     #define FONT_P "assets/font.ttf"
 
@@ -25,7 +26,7 @@ typedef struct sprite_t {
     int height;
     float anim_speed;
     float elapsed_time;
-    float move_speed;
+    float move_interval;
     float move_time;
     int size;
 } sprite_t;
@@ -38,7 +39,7 @@ typedef struct linked_t {
 typedef struct game_t {
     sfRenderWindow *window;
     sfSprite *background;
-    sfTexture *pigeon;
+    sfTexture *suk;
     sfEvent event;
     sfClock *clock;
     linked_t *sprites;
@@ -53,7 +54,7 @@ void analyse_events(game_t *game, sfEvent event);
 sfRenderWindow *create_window(void);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 sprite_t *create_sprite(sfTexture *texture, int nb_frames,
-                        float move_speed, sfVector2f pos);
+                        float move_interval, sfVector2f pos);
 sfSprite *create_background(char *path);
 void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock);
 void add_in_linked(linked_t **begin, sprite_t *data);
@@ -61,9 +62,9 @@ float get_time(sfClock *clock);
 int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
 void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
-sfTexture *create_pigeon(char *path);
+sfTexture *create_suk(char *path);
 void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
-                float move_speed);
+                float move_interval);
 void remove_from_linked(linked_t **begin, sprite_t *data);
 void set_cursor(sfRenderWindow *window, char *path);
 void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size);
@@ -75,5 +76,6 @@ void spawn_sprites(game_t *game);
 sfVector2f get_rand_spawn(void);
 int get_rand_int(int min, int max);
 float get_rand_float(float min, float max);
+float deduce_anim_speed(float move_interval);
 
 #endif /* !my_hunter_H_ */

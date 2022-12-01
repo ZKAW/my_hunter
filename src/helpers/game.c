@@ -17,7 +17,7 @@ game_t *create_game(void)
     game->clock = sfClock_create();
     game->sprites = sprites;
     game->background = create_background(BACKGROUND_P);
-    game->pigeon = sfTexture_createFromFile(PIGEON_P, NULL);
+    game->suk = sfTexture_createFromFile(SUK_P, NULL);
     game->lives = 3;
     return (game);
 }
@@ -37,4 +37,11 @@ float get_rand_float(float min, float max)
 {
     float scale = rand() / (float) RAND_MAX;
     return (min + scale * (max - min));
+}
+
+float deduce_anim_speed(float move_interval)
+{
+    float anim_speed = 1.0f / move_interval;
+    if (anim_speed < 0.2f) anim_speed = 0.2f;
+    return (anim_speed);
 }

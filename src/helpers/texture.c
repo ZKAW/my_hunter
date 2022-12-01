@@ -20,14 +20,14 @@ int get_texture_width(sfTexture *texture)
 {
     sfVector2u size = sfTexture_getSize(texture);
 
-    return (size.x - 1);
+    return (size.x);
 }
 
 int get_texture_height(sfTexture *texture)
 {
     sfVector2u size = sfTexture_getSize(texture);
 
-    return (size.y - 1);
+    return (size.y);
 }
 
 sfSprite *create_background(char *path)
