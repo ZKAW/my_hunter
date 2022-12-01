@@ -19,6 +19,14 @@ sfRenderWindow *create_window(void)
     return (window);
 }
 
+void exit_game(game_t *game)
+{
+    sfClock_destroy(game->clock);
+    sfRenderWindow_destroy(game->window);
+    sfSprite_destroy(game->sprites->data->sprite);
+    sfTexture_destroy(game->sprites->data->texture);
+}
+
 int get_window_width(sfRenderWindow *window)
 {
     sfVector2u size = sfRenderWindow_getSize(window);

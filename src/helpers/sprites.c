@@ -58,6 +58,7 @@ void display_sprites(game_t *game)
             remove_from_linked(&tmp_sprites, tmp_sprites->data);
             game->lives--;
             printf("lives: %d\n", game->lives);
+            continue;
         }
         if (game->lives <= 0) {
             printf("GAME OVER\n");

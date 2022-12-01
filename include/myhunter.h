@@ -78,5 +78,6 @@ int get_rand_int(int min, int max);
 float get_rand_float(float min, float max);
 float deduce_anim_speed(float move_interval);
 void display_lives(sfRenderWindow *window, int lives);
+void exit_game(game_t *game);
 
 #endif /* !my_hunter_H_ */

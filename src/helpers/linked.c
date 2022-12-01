@@ -29,11 +29,10 @@ void remove_from_linked(linked_t **begin, sprite_t *data)
     linked_t *tmp = *begin;
     linked_t *prev = NULL;
 
-    sfSprite_destroy(data->sprite);
     if (tmp->data == data) {
-        tmp = tmp->next;
-        free(*begin);
-        *begin = tmp;
+        tmp->data->pos.x = -150;
+        tmp->data->pos.y = -150;
+        sfSprite_setPosition(tmp->data->sprite, tmp->data->pos);
         return;
     }
 
@@ -42,7 +41,8 @@ void remove_from_linked(linked_t **begin, sprite_t *data)
         tmp = tmp->next;
     }
 
-    if (tmp == NULL) return;
+    if (tmp == NULL)
+        return;
 
     prev->next = tmp->next;
     free(tmp);

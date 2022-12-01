@@ -26,6 +26,6 @@ int my_hunter(void)
         sfRenderWindow_display(game->window);
     }
 
-    sfRenderWindow_destroy(game->window);
+    exit_game(game);
     return (0);
 }
