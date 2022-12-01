@@ -12,7 +12,8 @@ void display_help(void)
 {
     my_putstr("DESCRIPTION:\n");
     my_putstr("\tInspired by the famous \"Duck Hunt\" game.\n");
-    my_putstr("\tYou have to shoot the Suk before they reach the end");
+    my_putstr("\tYou have to shoot the evil");
+    my_putstr(" Suk before they reach the paradise.\n");
     my_putstr(" of the screen.\n");
     my_putstr("\tYou have 3 lives.\n");
     my_putstr("INPUT:\n");

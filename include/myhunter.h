@@ -12,7 +12,7 @@
     #include "settings.h"
 
     #define SUK_P "assets/suk_sprite.png"
-    #define BACKGROUND_P "assets/background2.png"
+    #define BACKGROUND_P "assets/background.png"
     #define FONT_P "assets/font.ttf"
 
 typedef struct sprite_t {

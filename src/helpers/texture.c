@@ -35,7 +35,7 @@ sfSprite *create_background(char *path)
     sfTexture *texture = sfTexture_createFromFile(path, NULL);
     sfSprite *sprite = sfSprite_create();
 
-    sfSprite_setScale(sprite, (sfVector2f) {1.3, 1.5});
+    sfSprite_setScale(sprite, (sfVector2f) {1.6, 1.5});
     sfSprite_setTexture(sprite, texture, sfTrue);
     return (sprite);
 }
