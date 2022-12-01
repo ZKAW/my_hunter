@@ -50,12 +50,10 @@ void display_sprites(game_t *game)
 {
     linked_t *tmp_sprites = game->sprites;
     while (tmp_sprites != NULL) {
-        if (tmp_sprites->data->pos.y > -150) {
-            display_sprite(game->window, tmp_sprites->data, game->clock);
-            tmp_sprites->data->pos.x += tmp_sprites->data->move_interval;
-            sfSprite_setPosition(tmp_sprites->data->sprite,
-                                tmp_sprites->data->pos);
-        }
+        display_sprite(game->window, tmp_sprites->data, game->clock);
+        tmp_sprites->data->pos.x += tmp_sprites->data->move_interval;
+        sfSprite_setPosition(tmp_sprites->data->sprite,
+                            tmp_sprites->data->pos);
         if (tmp_sprites->data->pos.x > SCREEN_WIDTH) {
             remove_from_linked(&tmp_sprites, tmp_sprites->data);
             game->lives--;
