@@ -30,3 +30,13 @@ void display_score(sfRenderWindow *window, int score)
     display_text(window, "Score: ", (sfVector2f) {50, 50}, size);
     display_text(window, str, (sfVector2f) {260, 50}, size);
 }
+
+void display_lives(sfRenderWindow *window, int lives)
+{
+    char *str = my_itoa(lives);
+    int size = 30;
+
+    display_text(window, "Lives: ", (sfVector2f){SCREEN_WIDTH - 300, 50},
+                size);
+    display_text(window, str, (sfVector2f) {SCREEN_WIDTH - 90, 50}, size);
+}

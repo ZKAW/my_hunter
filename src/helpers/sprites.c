@@ -46,15 +46,27 @@ void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock)
     }
 }
 
-void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock)
+void display_sprites(game_t *game)
 {
-    while (sprites != NULL) {
-        if (sprites->data->pos.y > -150) {
-            display_sprite(window, sprites->data, clock);
-            sprites->data->pos.x += sprites->data->move_interval;
-            sfSprite_setPosition(sprites->data->sprite, sprites->data->pos);
+    linked_t *tmp_sprites = game->sprites;
+    while (tmp_sprites != NULL) {
+        if (tmp_sprites->data->pos.y > -150) {
+            display_sprite(game->window, tmp_sprites->data, game->clock);
+            tmp_sprites->data->pos.x += tmp_sprites->data->move_interval;
+            sfSprite_setPosition(tmp_sprites->data->sprite,
+                                tmp_sprites->data->pos);
         }
-        sprites = sprites->next;
+        if (tmp_sprites->data->pos.x > SCREEN_WIDTH) {
+            remove_from_linked(&tmp_sprites, tmp_sprites->data);
+            game->lives--;
+            printf("lives: %d\n", game->lives);
+        }
+        if (game->lives <= 0) {
+            printf("GAME OVER\n");
+            sfRenderWindow_close(game->window);
+            return;
+        }
+        tmp_sprites = tmp_sprites->next;
     }
 }
 

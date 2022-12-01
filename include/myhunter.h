@@ -61,7 +61,7 @@ void add_in_linked(linked_t **begin, sprite_t *data);
 float get_time(sfClock *clock);
 int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
-void display_sprites(linked_t *sprites, sfRenderWindow *window, sfClock *clock);
+void display_sprites(game_t *game);
 sfTexture *create_suk(char *path);
 void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
                 float move_interval);
@@ -77,5 +77,6 @@ sfVector2f get_rand_spawn(void);
 int get_rand_int(int min, int max);
 float get_rand_float(float min, float max);
 float deduce_anim_speed(float move_interval);
+void display_lives(sfRenderWindow *window, int lives);
 
 #endif /* !my_hunter_H_ */

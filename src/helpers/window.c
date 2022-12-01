@@ -9,7 +9,7 @@
 
 sfRenderWindow *create_window(void)
 {
-    sfVideoMode mode = {1920, 1080, 32};
+    sfVideoMode mode = {SCREEN_WIDTH, SCREEN_HEIGHT, 32};
     sfRenderWindow *window;
     char *w_title = "Kill The Suk";
 

@@ -19,7 +19,8 @@ int my_hunter(void)
         sfRenderWindow_drawSprite(game->window, game->background, NULL);
         spawn_sprites(game);
         display_score(game->window, game->score);
-        display_sprites(game->sprites, game->window, game->clock);
+        display_lives(game->window, game->lives);
+        display_sprites(game);
         while (sfRenderWindow_pollEvent(game->window, &event))
             analyse_events(game, event);
         sfRenderWindow_display(game->window);

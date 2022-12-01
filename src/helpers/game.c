@@ -18,7 +18,7 @@ game_t *create_game(void)
     game->sprites = sprites;
     game->background = create_background(BACKGROUND_P);
     game->suk = sfTexture_createFromFile(SUK_P, NULL);
-    game->lives = 3;
+    game->lives = NB_LIVES;
     return (game);
 }
 
