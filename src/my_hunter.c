@@ -22,10 +22,10 @@ int my_hunter(void)
 
         handle_scene[game->scene](game);
 
+        if (game->scene == 4) break;
         if (game->window == NULL || game->lives <= 0) {
             game->scene = 3;
         }
-        if (game->scene == 4) break;
 
         sfRenderWindow_display(game->window);
     }

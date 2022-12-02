@@ -20,7 +20,7 @@ static void (*handle_KEY_SPACE[])(game_t *) = {
     restart_game,
     display_game,
     display_game,
-    display_main_menu,
+    display_game_over,
 };
 
 #endif /* !KEY_EVENTS_H_ */
