@@ -18,6 +18,7 @@ SRC	= src/main.c \
 	src/helpers/display.c \
 	src/helpers/game.c \
 	src/helpers/lifebar.c \
+	src/helpers/utils.c \
 
 OBJ	= $(SRC:.c=.o)
 
