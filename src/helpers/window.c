@@ -19,22 +19,6 @@ sfRenderWindow *create_window(void)
     return (window);
 }
 
-void destroy_game(game_t *game)
-{
-    if (game == NULL)
-        return;
-    if (game->clock != NULL)
-        sfClock_destroy(game->clock);
-    if (game->window != NULL)
-        sfRenderWindow_destroy(game->window);
-    if (game->sprites == NULL || game->sprites->data == NULL)
-        return;
-    if (game->sprites->data->sprite != NULL)
-        sfSprite_destroy(game->sprites->data->sprite);
-    if (game->sprites->data->texture != NULL)
-        sfTexture_destroy(game->sprites->data->texture);
-}
-
 int get_window_width(sfRenderWindow *window)
 {
     sfVector2u size = sfRenderWindow_getSize(window);

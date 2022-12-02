@@ -35,25 +35,22 @@ sprite_t *create_sprite(sfTexture *texture, int nb_frames,
     return (sprite);
 }
 
-void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock)
-{
-    sfRenderWindow_drawSprite(window, sprite->sprite, NULL);
-    float time_s = get_time(clock);
-    if ((time_s - sprite->elapsed_time) > sprite->anim_speed) {
-        move_rect(&sprite->rect, sprite->size, sprite->width);
-        sfSprite_setTextureRect(sprite->sprite, sprite->rect);
-        sprite->elapsed_time = time_s;
-    }
-}
-
 void display_sprites(game_t *game)
 {
     linked_t *tmp_sprites = game->sprites;
+    sprite_t *sprite_elm;
     while (tmp_sprites != NULL) {
-        display_sprite(game->window, tmp_sprites->data, game->clock);
-        tmp_sprites->data->pos.x += tmp_sprites->data->move_interval;
-        sfSprite_setPosition(tmp_sprites->data->sprite,
-                            tmp_sprites->data->pos);
+        sprite_elm = tmp_sprites->data;
+        sfRenderWindow_drawSprite(game->window, sprite_elm->sprite, NULL);
+        float time_s = get_time(game->clock);
+        if ((time_s - sprite_elm->elapsed_time) > sprite_elm->anim_speed) {
+            move_rect(&sprite_elm->rect, sprite_elm->size, sprite_elm->width);
+            sfSprite_setTextureRect(sprite_elm->sprite, sprite_elm->rect);
+            sprite_elm->elapsed_time = time_s;
+        }
+        sprite_elm->pos.x += sprite_elm->move_interval;
+        sfSprite_setPosition(sprite_elm->sprite,
+                            sprite_elm->pos);
         tmp_sprites = tmp_sprites->next;
     }
 }
@@ -82,4 +79,14 @@ void destroy_outside_sprites(game_t *game)
         }
         tmp_sprites = tmp_sprites->next;
     }
+}
+
+void destroy_sprites(game_t *game)
+{
+    linked_t *tmp_sprites = game->sprites;
+    while (tmp_sprites != NULL) {
+        remove_from_linked(&game->sprites, tmp_sprites->data);
+        tmp_sprites = game->sprites;
+    }
+    game->sprites = NULL;
 }

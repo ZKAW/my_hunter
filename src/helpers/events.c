@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include "../../include/myhunter.h"
+#include "../../include/key_events.h"
 #include "../../include/my.h"
 
 void manage_mouse_click(game_t *game, sfMouseButtonEvent event)
@@ -30,6 +31,13 @@ void analyse_events(game_t *game, sfEvent event)
 {
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(game->window);
-    if (event.type == sfEvtMouseButtonPressed)
+    if (event.type == sfEvtMouseButtonPressed && game->scene == 1)
         manage_mouse_click(game, event.mouseButton);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
+        handle_KEY_ESC[game->scene](game);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
+        handle_KEY_SPACE[game->scene](game);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyR &&
+        game->scene != 0)
+        restart_game(game);
 }

@@ -60,6 +60,7 @@ typedef struct game_t {
     float spawn_time;
     int score;
     int lives;
+    int scene;
 } game_t;
 
 int my_hunter(void);
@@ -71,7 +72,6 @@ sprite_t *create_sprite(sfTexture *texture, int nb_frames,
                         float move_interval, sfVector2f pos);
 sfSprite *create_background(char *path);
 sfSprite *create_lifebar(char *path);
-void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock);
 void add_in_linked(linked_t **begin, sprite_t *data);
 float get_time(sfClock *clock);
 int get_texture_width(sfTexture *texture);
@@ -93,8 +93,14 @@ float deduce_anim_speed(float move_interval);
 void display_lives(sfRenderWindow *window, int lives);
 void destroy_game(game_t *game);
 void update_lifebar(game_t *game, int lives);
-void display_game_over(game_t *game);
 void destroy_outside_sprites(game_t *game);
 void render_game(game_t *game);
+void display_main_menu(game_t *game);
+void display_game(game_t *game);
+void display_pause_menu(game_t *game);
+void display_game_over(game_t *game);
+void destroy_sprites(game_t *game);
+void init_quit(game_t *game);
+void restart_game(game_t *game);
 
 #endif /* !my_hunter_H_ */

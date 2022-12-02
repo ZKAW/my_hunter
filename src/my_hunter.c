@@ -6,6 +6,8 @@
 */
 
 #include "../include/myhunter.h"
+#include "../include/scenes.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,14 +20,16 @@ int my_hunter(void)
         while (sfRenderWindow_pollEvent(game->window, &event))
             analyse_events(game, event);
 
-        render_game(game);
+        handle_scene[game->scene](game);
+
         if (game->window == NULL || game->lives <= 0) {
-            display_game_over(game);
-            break;
+            game->scene = 3;
         }
+        if (game->scene == 4) break;
+
         sfRenderWindow_display(game->window);
     }
-
     destroy_game(game);
+
     return (0);
 }
