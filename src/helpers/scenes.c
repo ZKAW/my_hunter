@@ -54,7 +54,7 @@ void display_game_over(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     display_text(game->window, "GAME OVER",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 200}, 100);
-    display_text(game->window, "Score: ",
+    display_text(game->window, "Score:",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2}, 50);
     display_text(game->window, my_itoa(game->score),
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 100}, 50);

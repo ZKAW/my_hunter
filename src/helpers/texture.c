@@ -30,23 +30,12 @@ int get_texture_height(sfTexture *texture)
     return (size.y);
 }
 
-sfSprite *create_background(char *path)
+sfSprite *create_background()
 {
-    sfTexture *texture = sfTexture_createFromFile(path, NULL);
+    sfTexture *texture = sfTexture_createFromFile(BACKGROUND_P, NULL);
     sfSprite *sprite = sfSprite_create();
 
     sfSprite_setScale(sprite, (sfVector2f) {1.6, 1.5});
     sfSprite_setTexture(sprite, texture, sfTrue);
-    return (sprite);
-}
-
-sfSprite *create_lifebar(char *path)
-{
-    sfTexture *texture = sfTexture_createFromFile(path, NULL);
-    sfSprite *sprite = sfSprite_create();
-
-    sfSprite_setScale(sprite, (sfVector2f) {0.5, 0.5});
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    sfSprite_setPosition(sprite, (sfVector2f) {SCREEN_WIDTH - 300, 50});
     return (sprite);
 }

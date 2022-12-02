@@ -41,9 +41,6 @@ typedef struct lifebar_t {
     sfSprite *sprite;
     sfTexture *texture;
     sfIntRect rect;
-    sfVector2f pos;
-    sfVector2f scale;
-    sfVector2f origin;
     int width;
     int height;
     int size;
@@ -52,7 +49,7 @@ typedef struct lifebar_t {
 typedef struct game_t {
     sfRenderWindow *window;
     sfSprite *background;
-    sfSprite *life_bar;
+    lifebar_t *lifebar;
     sfTexture *suk;
     sfEvent event;
     sfClock *clock;
@@ -70,8 +67,8 @@ sfRenderWindow *create_window(void);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 sprite_t *create_sprite(sfTexture *texture, int nb_frames,
                         float move_interval, sfVector2f pos);
-sfSprite *create_background(char *path);
-sfSprite *create_lifebar(char *path);
+sfSprite *create_background(void);
+lifebar_t *create_lifebar(void);
 void add_in_linked(linked_t **begin, sprite_t *data);
 float get_time(sfClock *clock);
 int get_texture_width(sfTexture *texture);

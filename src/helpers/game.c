@@ -18,8 +18,8 @@ game_t *create_game(void)
     game->window = create_window();
     game->clock = sfClock_create();
     game->sprites = sprites;
-    game->background = create_background(BACKGROUND_P);
-    game->life_bar = create_lifebar(LIFE_BAR_P);
+    game->background = create_background();
+    game->lifebar = create_lifebar();
     game->suk = sfTexture_createFromFile(SUK_P, NULL);
     game->lives = NB_LIVES;
     game->scene = 0;
@@ -32,7 +32,8 @@ void render_game(game_t *game)
     sfRenderWindow_drawSprite(game->window, game->background, NULL);
     spawn_sprites(game);
     display_score(game->window, game->score);
-    display_lives(game->window, game->lives);
+    // display_lives(game->window, game->lives);
+    update_lifebar(game, game->lives);
     display_sprites(game);
     destroy_outside_sprites(game);
 }
