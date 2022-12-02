@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** myhunter
 ** File description:
-** text
+** display
 */
 
 #include "../../include/myhunter.h"
@@ -39,4 +39,12 @@ void display_lives(sfRenderWindow *window, int lives)
     display_text(window, "Lives: ", (sfVector2f){SCREEN_WIDTH - 300, 50},
                 size);
     display_text(window, str, (sfVector2f) {SCREEN_WIDTH - 90, 50}, size);
+}
+
+void display_game_over(game_t *game)
+{
+    my_putstr("GAME OVER\n");
+    my_putstr("SCORE: ");
+    my_put_nbr(game->score);
+    my_putchar('\n');
 }

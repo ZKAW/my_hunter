@@ -78,8 +78,6 @@ int get_texture_width(sfTexture *texture);
 int get_texture_height(sfTexture *texture);
 void display_sprites(game_t *game);
 sfTexture *create_suk(char *path);
-void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
-                float move_interval);
 void remove_from_linked(linked_t **begin, sprite_t *data);
 void set_cursor(sfRenderWindow *window, char *path);
 void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size);
@@ -96,5 +94,7 @@ void display_lives(sfRenderWindow *window, int lives);
 void destroy_game(game_t *game);
 void update_lifebar(game_t *game, int lives);
 void display_game_over(game_t *game);
+void destroy_outside_sprites(game_t *game);
+void render_game(game_t *game);
 
 #endif /* !my_hunter_H_ */

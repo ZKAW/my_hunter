@@ -15,7 +15,7 @@ SRC	= src/main.c \
 	src/helpers/linked.c \
 	src/helpers/clock.c \
 	src/helpers/texture.c \
-	src/helpers/text.c \
+	src/helpers/display.c \
 	src/helpers/game.c \
 	src/helpers/lifebar.c \
 

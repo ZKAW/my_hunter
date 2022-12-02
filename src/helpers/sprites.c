@@ -54,21 +54,8 @@ void display_sprites(game_t *game)
         tmp_sprites->data->pos.x += tmp_sprites->data->move_interval;
         sfSprite_setPosition(tmp_sprites->data->sprite,
                             tmp_sprites->data->pos);
-        if (tmp_sprites->data->pos.x > SCREEN_WIDTH
-            && tmp_sprites->data->pos.y > -150) {
-            remove_from_linked(&tmp_sprites, tmp_sprites->data);
-            game->lives--;
-            continue;
-        }
         tmp_sprites = tmp_sprites->next;
     }
-}
-
-void spawn_sprite(linked_t **sprites, sfTexture *texture, sfVector2f pos,
-                float move_interval)
-{
-    sprite_t *sprite = create_sprite(texture, 2, move_interval, pos);
-    add_in_linked(sprites, sprite);
 }
 
 void spawn_sprites(game_t *game)
@@ -77,7 +64,22 @@ void spawn_sprites(game_t *game)
     float interval = get_rand_float(MIN_SPAWN_INTERVAL, MAX_SPAWN_INTERVAL);
     float speed = get_rand_float(MIN_SPEED, MAX_SPEED);
     if ((time_s - game->spawn_time) > interval) {
-        spawn_sprite(&game->sprites, game->suk, get_rand_spawn(), speed);
+        sprite_t *sprite = create_sprite(game->suk, 2, speed, get_rand_spawn());
+        add_in_linked(&game->sprites, sprite);
         game->spawn_time = time_s;
+    }
+}
+
+void destroy_outside_sprites(game_t *game)
+{
+    linked_t *tmp_sprites = game->sprites;
+    while (tmp_sprites != NULL) {
+        if (tmp_sprites->data->pos.x > get_window_width(game->window)) {
+            remove_from_linked(&game->sprites, tmp_sprites->data);
+            game->lives--;
+            tmp_sprites = game->sprites;
+            continue;
+        }
+        tmp_sprites = tmp_sprites->next;
     }
 }

@@ -49,10 +49,13 @@ float deduce_anim_speed(float move_interval)
     return (anim_speed);
 }
 
-void display_game_over(game_t *game)
+void render_game(game_t *game)
 {
-    my_putstr("GAME OVER\n");
-    my_putstr("SCORE: ");
-    my_put_nbr(game->score);
-    my_putchar('\n');
+    sfRenderWindow_clear(game->window, sfBlack);
+    sfRenderWindow_drawSprite(game->window, game->background, NULL);
+    spawn_sprites(game);
+    display_score(game->window, game->score);
+    display_lives(game->window, game->lives);
+    display_sprites(game);
+    destroy_outside_sprites(game);
 }
