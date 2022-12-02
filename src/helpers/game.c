@@ -5,8 +5,10 @@
 ** game
 */
 
-#include "../../include/myhunter.h"
 #include <stdlib.h>
+
+#include "../../include/myhunter.h"
+#include "../../include/my.h"
 
 game_t *create_game(void)
 {
@@ -17,6 +19,7 @@ game_t *create_game(void)
     game->clock = sfClock_create();
     game->sprites = sprites;
     game->background = create_background(BACKGROUND_P);
+    game->life_bar = create_lifebar(LIFE_BAR_P);
     game->suk = sfTexture_createFromFile(SUK_P, NULL);
     game->lives = NB_LIVES;
     return (game);
@@ -44,4 +47,12 @@ float deduce_anim_speed(float move_interval)
     float anim_speed = 1.0f / move_interval;
     if (anim_speed < 0.2f) anim_speed = 0.2f;
     return (anim_speed);
+}
+
+void display_game_over(game_t *game)
+{
+    my_putstr("GAME OVER\n");
+    my_putstr("SCORE: ");
+    my_put_nbr(game->score);
+    my_putchar('\n');
 }

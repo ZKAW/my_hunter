@@ -23,9 +23,13 @@ int my_hunter(void)
         display_score(game->window, game->score);
         display_lives(game->window, game->lives);
         display_sprites(game);
+        if (game->window == NULL || game->lives <= 0) {
+            display_game_over(game);
+            break;
+        }
         sfRenderWindow_display(game->window);
     }
 
-    exit_game(game);
+    destroy_game(game);
     return (0);
 }

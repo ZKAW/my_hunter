@@ -54,16 +54,11 @@ void display_sprites(game_t *game)
         tmp_sprites->data->pos.x += tmp_sprites->data->move_interval;
         sfSprite_setPosition(tmp_sprites->data->sprite,
                             tmp_sprites->data->pos);
-        if (tmp_sprites->data->pos.x > SCREEN_WIDTH) {
+        if (tmp_sprites->data->pos.x > SCREEN_WIDTH
+            && tmp_sprites->data->pos.y > -150) {
             remove_from_linked(&tmp_sprites, tmp_sprites->data);
             game->lives--;
-            printf("lives: %d\n", game->lives);
             continue;
-        }
-        if (game->lives <= 0) {
-            printf("GAME OVER\n");
-            sfRenderWindow_close(game->window);
-            return;
         }
         tmp_sprites = tmp_sprites->next;
     }

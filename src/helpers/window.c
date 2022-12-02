@@ -19,12 +19,20 @@ sfRenderWindow *create_window(void)
     return (window);
 }
 
-void exit_game(game_t *game)
+void destroy_game(game_t *game)
 {
-    sfClock_destroy(game->clock);
-    sfRenderWindow_destroy(game->window);
-    sfSprite_destroy(game->sprites->data->sprite);
-    sfTexture_destroy(game->sprites->data->texture);
+    if (game == NULL)
+        return;
+    if (game->clock != NULL)
+        sfClock_destroy(game->clock);
+    if (game->window != NULL)
+        sfRenderWindow_destroy(game->window);
+    if (game->sprites == NULL || game->sprites->data == NULL)
+        return;
+    if (game->sprites->data->sprite != NULL)
+        sfSprite_destroy(game->sprites->data->sprite);
+    if (game->sprites->data->texture != NULL)
+        sfTexture_destroy(game->sprites->data->texture);
 }
 
 int get_window_width(sfRenderWindow *window)

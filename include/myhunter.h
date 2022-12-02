@@ -13,6 +13,7 @@
 
     #define SUK_P "assets/suk_sprite.png"
     #define BACKGROUND_P "assets/background.png"
+    #define LIFE_BAR_P "assets/life_bar.png"
     #define FONT_P "assets/font.ttf"
 
 typedef struct sprite_t {
@@ -36,9 +37,22 @@ typedef struct linked_t {
     struct linked_t *next;
 } linked_t;
 
+typedef struct lifebar_t {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfIntRect rect;
+    sfVector2f pos;
+    sfVector2f scale;
+    sfVector2f origin;
+    int width;
+    int height;
+    int size;
+} lifebar_t;
+
 typedef struct game_t {
     sfRenderWindow *window;
     sfSprite *background;
+    sfSprite *life_bar;
     sfTexture *suk;
     sfEvent event;
     sfClock *clock;
@@ -56,6 +70,7 @@ void move_rect(sfIntRect *rect, int offset, int max_value);
 sprite_t *create_sprite(sfTexture *texture, int nb_frames,
                         float move_interval, sfVector2f pos);
 sfSprite *create_background(char *path);
+sfSprite *create_lifebar(char *path);
 void display_sprite(sfRenderWindow *window, sprite_t *sprite, sfClock *clock);
 void add_in_linked(linked_t **begin, sprite_t *data);
 float get_time(sfClock *clock);
@@ -78,6 +93,8 @@ int get_rand_int(int min, int max);
 float get_rand_float(float min, float max);
 float deduce_anim_speed(float move_interval);
 void display_lives(sfRenderWindow *window, int lives);
-void exit_game(game_t *game);
+void destroy_game(game_t *game);
+void update_lifebar(game_t *game, int lives);
+void display_game_over(game_t *game);
 
 #endif /* !my_hunter_H_ */

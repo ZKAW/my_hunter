@@ -29,6 +29,7 @@ void remove_from_linked(linked_t **begin, sprite_t *data)
     linked_t *tmp = *begin;
     linked_t *prev = NULL;
 
+
     if (tmp->data == data) {
         tmp->data->pos.x = -150;
         tmp->data->pos.y = -150;

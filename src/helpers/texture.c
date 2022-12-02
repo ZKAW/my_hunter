@@ -39,3 +39,15 @@ sfSprite *create_background(char *path)
     sfSprite_setTexture(sprite, texture, sfTrue);
     return (sprite);
 }
+
+sfSprite *create_lifebar(char *path)
+{
+    sfTexture *texture = sfTexture_createFromFile(path, NULL);
+    sfSprite *sprite = sfSprite_create();
+
+    sfSprite_setScale(sprite, (sfVector2f) {0.5, 0.5});
+    sfSprite_setTexture(sprite, texture, sfTrue);
+    // set to top right corner
+    sfSprite_setPosition(sprite, (sfVector2f) {SCREEN_WIDTH - 300, 50});
+    return (sprite);
+}

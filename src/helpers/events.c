@@ -18,7 +18,6 @@ void manage_mouse_click(game_t *game, sfMouseButtonEvent event)
     while (tmp != NULL) {
         sfFloatRect rect = sfSprite_getGlobalBounds(tmp->data->sprite);
         if (sfFloatRect_contains(&rect, x, y)) {
-            my_putstr("You killed a suk!\n");
             game->score++;
             remove_from_linked(&game->sprites, tmp->data);
             break;
