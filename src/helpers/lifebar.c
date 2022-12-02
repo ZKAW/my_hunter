@@ -14,7 +14,7 @@ lifebar_t *create_lifebar(void)
 
     lifebar->texture = sfTexture_createFromFile(LIFE_BAR_P, NULL);
     lifebar->sprite = sfSprite_create();
-    lifebar->width = get_texture_width(lifebar->texture);
+    lifebar->width = get_texture_width(lifebar->texture) - 1;
     lifebar->height = get_texture_height(lifebar->texture);
     lifebar->size = lifebar->width / 3;
     lifebar->rect = (sfIntRect) {0, 0, lifebar->size, lifebar->height};
@@ -31,10 +31,18 @@ void update_lifebar(game_t *game, int lives)
     lifebar_t *lifebar = game->lifebar;
     sfIntRect rect = lifebar->rect;
 
-    if (lives == 3) rect.left = 0;
-    if (lives == 2) rect.left = lifebar->size;
-    if (lives == 1) rect.left = lifebar->size * 2;
-    if (lives == 0) rect.left = lifebar->size * 3;
+    if (lives == 2) {
+        rect.left = lifebar->size - 2;
+        rect.height = lifebar->height - 1;
+    }
+    if (lives == 1) {
+        rect.left = (lifebar->size - 3) * 2;
+        rect.height = lifebar->height - 2;
+    }
+    if (lives == 0) {
+        rect.left = (lifebar->size - 4) * 3;
+        rect.height = lifebar->height - 3;
+    }
 
     sfSprite_setTextureRect(lifebar->sprite, rect);
     sfRenderWindow_drawSprite(game->window, lifebar->sprite, NULL);
