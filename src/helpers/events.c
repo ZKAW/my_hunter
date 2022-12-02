@@ -33,11 +33,13 @@ void analyse_events(game_t *game, sfEvent event)
         sfRenderWindow_close(game->window);
     if (event.type == sfEvtMouseButtonPressed && game->scene == 1)
         manage_mouse_click(game, event.mouseButton);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-        handle_KEY_ESC[game->scene](game);
+
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyQ)
+        handle_KEY_Q[game->scene](game);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
         handle_KEY_SPACE[game->scene](game);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyR &&
-        game->scene != 0)
-        restart_game(game);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
+        handle_KEY_ESC[game->scene](game);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyR)
+        handle_KEY_R[game->scene](game);
 }
