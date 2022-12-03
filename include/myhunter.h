@@ -29,11 +29,12 @@ typedef struct sprite_t {
     sfVector2f origin;
     int width;
     int height;
+    int size;
     float anim_speed;
     float elapsed_time;
     float move_interval;
     float move_time;
-    int size;
+    int does_rotate;
 } sprite_t;
 
 typedef struct linked_t {

@@ -27,12 +27,17 @@ sprite_t *create_sprite(sfTexture *texture, int nb_frames,
     sprite->anim_speed = deduce_anim_speed(move_interval);
     sprite->elapsed_time = 0;
     sprite->move_time = 0;
-
+    sprite->does_rotate = (rand() % 10 == 0);
     sfSprite_setTexture(sprite->sprite, sprite->texture, sfTrue);
     sfSprite_setTextureRect(sprite->sprite, sprite->rect);
     sfSprite_setPosition(sprite->sprite, sprite->pos);
     sfSprite_setScale(sprite->sprite, sprite->scale);
     return (sprite);
+}
+
+void rotate_sprite(sprite_t *sprite, float angle)
+{
+    if (sprite->does_rotate == 1) sfSprite_rotate(sprite->sprite, angle);
 }
 
 void display_sprites(game_t *game)
@@ -46,6 +51,7 @@ void display_sprites(game_t *game)
         if ((time_s - sprite_elm->elapsed_time) > sprite_elm->anim_speed) {
             move_rect(&sprite_elm->rect, sprite_elm->size, sprite_elm->width);
             sfSprite_setTextureRect(sprite_elm->sprite, sprite_elm->rect);
+            rotate_sprite(sprite_elm, 15);
             sprite_elm->elapsed_time = time_s;
         }
         sprite_elm->pos.x += sprite_elm->move_interval;
