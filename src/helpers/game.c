@@ -23,6 +23,10 @@ game_t *create_game(void)
     game->cursor = create_cursor();
     game->suk = sfTexture_createFromFile(SUK_P, NULL);
     game->sounds = create_sounds();
+    game->score_str = malloc(sizeof(char) * 11);
+    game->score_str[0] = '0';
+    game->score_str[1] = '\0';
+    game->font = sfFont_createFromFile(FONT_P);
     game->lives = NB_LIVES;
     game->scene = 0;
     return (game);
@@ -35,7 +39,7 @@ void render_game(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     sfRenderWindow_drawSprite(game->window, game->background, NULL);
     spawn_sprites(game);
-    display_score(game->window, game->score);
+    display_score(game);
     update_lifebar(game, game->lives);
     display_sprites(game);
     destroy_outside_sprites(game);
@@ -50,4 +54,30 @@ void restart_game(game_t *game)
     stop_music(game);
     stop_all_sounds(game);
     display_game(game);
+}
+
+float get_spawn_interval(game_t *game)
+{
+    float time_s = get_time(game->clock);
+
+    float min_spawn_interval = MIN_SPAWN_INTERVAL - (time_s / 100);
+    float max_spawn_interval = MAX_SPAWN_INTERVAL - (time_s / 20);
+    if (min_spawn_interval < TOP_MIN_SPAWN_INTERVAL)
+        min_spawn_interval = TOP_MIN_SPAWN_INTERVAL;
+    if (max_spawn_interval < TOP_MAX_SPAWN_INTERVAL)
+        max_spawn_interval = TOP_MAX_SPAWN_INTERVAL;
+
+    return (get_rand_float(min_spawn_interval, max_spawn_interval));
+}
+
+float get_speed(game_t *game)
+{
+    float time_s = get_time(game->clock);
+
+    float min_speed = MIN_SPEED + (time_s / (5 * my_intlen((int) time_s)));
+    float max_speed = MAX_SPEED + (time_s / (5 * my_intlen((int) time_s)));
+    if (min_speed > TOP_MIN_SPEED) min_speed = TOP_MIN_SPEED;
+    if (max_speed > TOP_MAX_SPEED) max_speed = TOP_MAX_SPEED;
+
+    return (get_rand_float(min_speed, max_speed));
 }

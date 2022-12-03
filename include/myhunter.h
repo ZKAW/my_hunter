@@ -69,8 +69,10 @@ typedef struct game_t {
     sfClock *clock;
     linked_t *sprites;
     sounds_t *sounds;
+    sfFont *font;
     float spawn_time;
     int score;
+    char *score_str;
     int lives;
     int scene;
     int display_cursor;
@@ -92,17 +94,16 @@ int get_texture_height(sfTexture *texture);
 void display_sprites(game_t *game);
 sfTexture *create_suk(char *path);
 void remove_from_linked(linked_t **begin, sprite_t *data);
-void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size);
+void display_text(game_t *game, char *str, sfVector2f pos, int size);
 int get_window_width(sfRenderWindow *window);
 int get_window_height(sfRenderWindow *window);
-void display_score(sfRenderWindow *window, int score);
+void display_score(game_t *game);
 void move_sprite(sprite_t *sprite, sfVector2f pos, sfClock *clock);
 void spawn_sprites(game_t *game);
 sfVector2f get_rand_spawn(void);
 int get_rand_int(int min, int max);
 float get_rand_float(float min, float max);
 float deduce_anim_speed(float move_interval);
-void display_lives(sfRenderWindow *window, int lives);
 void destroy_game(game_t *game);
 void update_lifebar(game_t *game, int lives);
 void destroy_outside_sprites(game_t *game);
@@ -126,5 +127,7 @@ void resume_all_sounds(game_t *game);
 void stop_all_sounds(game_t *game);
 sfSprite *create_cursor(void);
 void display_cursor(game_t *game);
+float get_spawn_interval(game_t *game);
+float get_speed(game_t *game);
 
 #endif /* !my_hunter_H_ */

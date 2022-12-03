@@ -9,10 +9,9 @@
 #include "../../include/my.h"
 #include <stdlib.h>
 
-void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size)
+void display_text(game_t *game, char *str, sfVector2f pos, int size)
 {
     sfText *text = sfText_create();
-    sfFont *font = sfFont_createFromFile(FONT_P);
     sfVector2f position = pos;
 
     int len = my_strlen(str);
@@ -27,27 +26,18 @@ void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size)
     if (pos.y < 0) pos.y = position.y;
 
     sfText_setString(text, str);
-    sfText_setFont(text, font);
+    sfText_setFont(text, game->font);
     sfText_setCharacterSize(text, size);
     sfText_setPosition(text, pos);
-    sfRenderWindow_drawText(window, text, NULL);
+    sfRenderWindow_drawText(game->window, text, NULL);
+    free(text);
 }
 
-void display_score(sfRenderWindow *window, int score)
+void display_score(game_t *game)
 {
-    char *str = my_itoa(score);
     int size = 30;
 
-    display_text(window, "Score: ", (sfVector2f) {50, 75}, size);
-    display_text(window, str, (sfVector2f) {275, 75}, size);
-}
-
-void display_lives(sfRenderWindow *window, int lives)
-{
-    char *str = my_itoa(lives);
-    int size = 30;
-
-    display_text(window, "Lives: ", (sfVector2f) {SCREEN_WIDTH - 300, 50},
-                size);
-    display_text(window, str, (sfVector2f) {SCREEN_WIDTH - 90, 50}, size);
+    my_itoa_dest(game->score_str, game->score);
+    display_text(game, "Score: ", (sfVector2f) {50, 75}, size);
+    display_text(game, game->score_str, (sfVector2f) {275, 75}, size);
 }

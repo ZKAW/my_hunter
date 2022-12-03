@@ -21,7 +21,7 @@ lifebar_t *create_lifebar(void)
     sfSprite_setTexture(lifebar->sprite, lifebar->texture, sfTrue);
     sfSprite_setTextureRect(lifebar->sprite, lifebar->rect);
     sfSprite_setPosition(lifebar->sprite, (sfVector2f)
-                        {SCREEN_WIDTH - (lifebar->size / 1.5), 20});
+                        {SCREEN_WIDTH - (lifebar->size / 1.6), 35});
     sfSprite_setScale(lifebar->sprite, (sfVector2f) {0.5, 0.5});
     return (lifebar);
 }

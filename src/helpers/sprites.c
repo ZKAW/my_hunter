@@ -64,9 +64,13 @@ void display_sprites(game_t *game)
 void spawn_sprites(game_t *game)
 {
     float time_s = get_time(game->clock);
-    float interval = get_rand_float(MIN_SPAWN_INTERVAL, MAX_SPAWN_INTERVAL);
-    float speed = get_rand_float(MIN_SPEED, MAX_SPEED);
-    if ((time_s - game->spawn_time) > interval) {
+    if (time_s < 1) return;
+
+
+    float spawn_interval = get_spawn_interval(game);
+    float speed = get_speed(game);
+
+    if ((time_s - game->spawn_time) > spawn_interval) {
         sprite_t *sprite = create_sprite(game->suk, 2, speed, get_rand_spawn());
         add_in_linked(&game->sprites, sprite);
         game->spawn_time = time_s;

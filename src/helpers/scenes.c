@@ -18,11 +18,11 @@ void display_main_menu(game_t *game)
     game->scene = 0;
     stop_all_sounds(game);
     sfRenderWindow_clear(game->window, sfBlack);
-    display_text(game->window, "KILL THE SUK",
+    display_text(game, "KILL THE SUK",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100}, 85);
-    display_text(game->window, "Press SPACE to start", (sfVector2f)
+    display_text(game, "Press SPACE to start", (sfVector2f)
                 {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 100}, 50);
-    display_text(game->window, "Press Q to exit game", (sfVector2f)
+    display_text(game, "Press Q to exit game", (sfVector2f)
                 {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 185}, 50);
     sfRenderWindow_display(game->window);
 }
@@ -45,13 +45,13 @@ void display_pause_menu(game_t *game)
     pause_music(game);
     pause_all_sounds(game);
     sfRenderWindow_clear(game->window, sfBlack);
-    display_text(game->window, "PAUSE",
+    display_text(game, "PAUSE",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100}, 100);
-    display_text(game->window, "Press ESC to resume",
+    display_text(game, "Press ESC to resume",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 100}, 50);
-    display_text(game->window, "Press R to restart",
+    display_text(game, "Press R to restart",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 185}, 50);
-    display_text(game->window, "Press Q to quit to main menu",
+    display_text(game, "Press Q to quit to main menu",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 270}, 50);
     sfRenderWindow_display(game->window);
 }
@@ -61,15 +61,15 @@ void display_game_over(game_t *game)
     game->scene = 3;
     stop_music(game);
     sfRenderWindow_clear(game->window, sfBlack);
-    display_text(game->window, "GAME OVER",
+    display_text(game, "GAME OVER",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 200}, 100);
-    display_text(game->window, "Score:",
+    display_text(game, "Score:",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2}, 50);
-    display_text(game->window, my_itoa(game->score),
+    display_text(game, my_itoa(game->score),
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 100}, 50);
-    display_text(game->window, "Press Q to quit to main menu", (sfVector2f)
+    display_text(game, "Press Q to quit to main menu", (sfVector2f)
                 {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 250}, 50);
-    display_text(game->window, "Press R to restart",
+    display_text(game, "Press R to restart",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 350}, 50);
     sfRenderWindow_display(game->window);
 }
