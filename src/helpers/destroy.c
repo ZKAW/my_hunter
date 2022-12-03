@@ -18,6 +18,8 @@ void destroy_sounds(game_t *game)
         sfSound_destroy(game->sounds->game_over);
     if (game->sounds->suk_death != NULL)
         sfSound_destroy(game->sounds->suk_death);
+    if (game->sounds->hit != NULL)
+        sfSound_destroy(game->sounds->hit);
     if (game->sounds->music != NULL)
         sfMusic_destroy(game->sounds->music);
     free(game->sounds);
