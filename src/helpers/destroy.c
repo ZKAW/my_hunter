@@ -23,7 +23,6 @@ void destroy_sounds(game_t *game)
     free(game->sounds);
 }
 
-
 void destroy_lifebar(game_t *game)
 {
     sfTexture_destroy(game->lifebar->texture);
