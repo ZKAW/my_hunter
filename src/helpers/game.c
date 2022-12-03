@@ -17,6 +17,7 @@ game_t *create_game(void)
 
     game->window = create_window();
     game->clock = sfClock_create();
+    game->spawn_time = 0;
     game->sprites = sprites;
     game->background = create_background();
     game->lifebar = create_lifebar();
@@ -54,6 +55,7 @@ void restart_game(game_t *game)
     game->score_str[1] = '\0';
     game->highscore = get_highscore();
     game->clock = sfClock_create();
+    game->spawn_time = 0;
     destroy_sprites(game);
     stop_music(game);
     stop_all_sounds(game);
