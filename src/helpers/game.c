@@ -48,8 +48,10 @@ void render_game(game_t *game)
 void restart_game(game_t *game)
 {
     game->lives = NB_LIVES;
-    game->score = 0;
     game->scene = 0;
+    game->score = 0;
+    game->score_str[0] = '0';
+    game->score_str[1] = '\0';
     destroy_sprites(game);
     stop_music(game);
     stop_all_sounds(game);
