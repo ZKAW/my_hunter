@@ -19,6 +19,7 @@
     #define GAME_START_P "assets/sounds/game_start.ogg"
     #define GAME_OVER_P "assets/sounds/game_over.ogg"
     #define SUK_DEATH_P "assets/sounds/suk_death.ogg"
+    #define CURSOR_P "assets/images/cursor.png"
 
 typedef struct sprite_t {
     sfSprite *sprite;
@@ -61,6 +62,7 @@ typedef struct sounds_t {
 typedef struct game_t {
     sfRenderWindow *window;
     sfSprite *background;
+    sfSprite *cursor;
     lifebar_t *lifebar;
     sfTexture *suk;
     sfEvent event;
@@ -71,6 +73,7 @@ typedef struct game_t {
     int score;
     int lives;
     int scene;
+    int display_cursor;
 } game_t;
 
 int my_hunter(void);
@@ -89,7 +92,6 @@ int get_texture_height(sfTexture *texture);
 void display_sprites(game_t *game);
 sfTexture *create_suk(char *path);
 void remove_from_linked(linked_t **begin, sprite_t *data);
-void set_cursor(sfRenderWindow *window, char *path);
 void display_text(sfRenderWindow *window, char *str, sfVector2f pos, int size);
 int get_window_width(sfRenderWindow *window);
 int get_window_height(sfRenderWindow *window);
@@ -122,5 +124,7 @@ sounds_t *create_sounds(void);
 void pause_all_sounds(game_t *game);
 void resume_all_sounds(game_t *game);
 void stop_all_sounds(game_t *game);
+sfSprite *create_cursor(void);
+void display_cursor(game_t *game);
 
 #endif /* !my_hunter_H_ */

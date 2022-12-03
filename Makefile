@@ -23,6 +23,7 @@ SRC	= src/main.c \
 	src/helpers/music.c \
 	src/helpers/sound.c \
 	src/helpers/destroy.c \
+	src/helpers/cursor.c \
 
 OBJ	= $(SRC:.c=.o)
 

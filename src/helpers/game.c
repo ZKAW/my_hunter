@@ -20,6 +20,7 @@ game_t *create_game(void)
     game->sprites = sprites;
     game->background = create_background();
     game->lifebar = create_lifebar();
+    game->cursor = create_cursor();
     game->suk = sfTexture_createFromFile(SUK_P, NULL);
     game->sounds = create_sounds();
     game->lives = NB_LIVES;
