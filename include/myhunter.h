@@ -11,10 +11,11 @@
     #include <SFML/Graphics.h>
     #include "settings.h"
 
-    #define SUK_P "assets/suk_sprite.png"
-    #define BACKGROUND_P "assets/background.png"
-    #define LIFE_BAR_P "assets/life_bar.png"
-    #define FONT_P "assets/font.ttf"
+    #define SUK_P "assets/sprites/suk_sprite.png"
+    #define LIFE_BAR_P "assets/sprites/life_bar.png"
+    #define BACKGROUND_P "assets/images/background.png"
+    #define FONT_P "assets/fonts/font.ttf"
+    #define MUSIC_P "assets/sounds/music.ogg"
 
 typedef struct sprite_t {
     sfSprite *sprite;
@@ -54,6 +55,7 @@ typedef struct game_t {
     sfEvent event;
     sfClock *clock;
     linked_t *sprites;
+    sfMusic *music;
     float spawn_time;
     int score;
     int lives;
@@ -99,5 +101,9 @@ void display_game_over(game_t *game);
 void destroy_sprites(game_t *game);
 void init_quit(game_t *game);
 void restart_game(game_t *game);
+sfMusic *load_music(void);
+void play_music(game_t *game);
+void pause_music(game_t *game);
+void stop_music(game_t *game);
 
 #endif /* !my_hunter_H_ */

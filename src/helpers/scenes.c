@@ -35,6 +35,7 @@ void display_game(game_t *game)
 void display_pause_menu(game_t *game)
 {
     game->scene = 2;
+    pause_music(game);
     sfRenderWindow_clear(game->window, sfBlack);
     display_text(game->window, "PAUSE",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100}, 100);
@@ -50,7 +51,7 @@ void display_pause_menu(game_t *game)
 void display_game_over(game_t *game)
 {
     game->scene = 3;
-
+    stop_music(game);
     sfRenderWindow_clear(game->window, sfBlack);
     display_text(game->window, "GAME OVER",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 200}, 100);
