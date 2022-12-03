@@ -26,6 +26,7 @@ game_t *create_game(void)
     game->score_str = malloc(sizeof(char) * 11);
     game->score_str[0] = '0';
     game->score_str[1] = '\0';
+    game->highscore = get_highscore();
     game->font = sfFont_createFromFile(FONT_P);
     game->lives = NB_LIVES;
     game->scene = 0;
@@ -48,10 +49,11 @@ void render_game(game_t *game)
 void restart_game(game_t *game)
 {
     game->lives = NB_LIVES;
-    game->scene = 0;
     game->score = 0;
     game->score_str[0] = '0';
     game->score_str[1] = '\0';
+    game->highscore = get_highscore();
+    game->clock = sfClock_create();
     destroy_sprites(game);
     stop_music(game);
     stop_all_sounds(game);
@@ -62,8 +64,8 @@ float get_spawn_interval(game_t *game)
 {
     float time_s = get_time(game->clock);
 
-    float min_spawn_interval = MIN_SPAWN_INTERVAL - (time_s / 100);
-    float max_spawn_interval = MAX_SPAWN_INTERVAL - (time_s / 20);
+    float min_spawn_interval = MIN_SPAWN_INTERVAL - (time_s / 50);
+    float max_spawn_interval = MAX_SPAWN_INTERVAL - (time_s / 25);
     if (min_spawn_interval < TOP_MIN_SPAWN_INTERVAL)
         min_spawn_interval = TOP_MIN_SPAWN_INTERVAL;
     if (max_spawn_interval < TOP_MAX_SPAWN_INTERVAL)

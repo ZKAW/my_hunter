@@ -15,6 +15,7 @@
 
 void display_main_menu(game_t *game)
 {
+    if (game->scene != 0) game->highscore = get_highscore();
     game->scene = 0;
     stop_all_sounds(game);
     sfRenderWindow_clear(game->window, sfBlack);
@@ -24,6 +25,9 @@ void display_main_menu(game_t *game)
                 {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 100}, 50);
     display_text(game, "Press Q to exit game", (sfVector2f)
                 {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 185}, 50);
+
+    display_text(game, "Highscore: ", (sfVector2f) {50, 75}, 30);
+    display_text(game, my_itoa(game->highscore), (sfVector2f) {400, 75}, 30);
     sfRenderWindow_display(game->window);
 }
 
@@ -59,11 +63,15 @@ void display_pause_menu(game_t *game)
 void display_game_over(game_t *game)
 {
     game->scene = 3;
+    char *score_text = "Score: ";
+    if (game->score > game->highscore) {
+        score_text = "New highscore!! Score: ";
+    }
     stop_music(game);
     sfRenderWindow_clear(game->window, sfBlack);
     display_text(game, "GAME OVER",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 200}, 100);
-    display_text(game, "Score:",
+    display_text(game, score_text,
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2}, 50);
     display_text(game, my_itoa(game->score),
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 100}, 50);

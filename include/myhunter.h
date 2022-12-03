@@ -64,6 +64,7 @@ typedef struct game_t {
     sfFont *font;
     float spawn_time;
     int score;
+    int highscore;
     char *score_str;
     int lives;
     int scene;
@@ -121,5 +122,7 @@ sfSprite *create_cursor(void);
 void display_cursor(game_t *game);
 float get_spawn_interval(game_t *game);
 float get_speed(game_t *game);
+void set_highscore(int score);
+int get_highscore(void);
 
 #endif /* !my_hunter_H_ */

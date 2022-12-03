@@ -24,6 +24,7 @@ SRC	= src/main.c \
 	src/helpers/sound.c \
 	src/helpers/destroy.c \
 	src/helpers/cursor.c \
+	src/helpers/save.c \
 
 OBJ	= $(SRC:.c=.o)
 

@@ -13,3 +13,4 @@ libmy.a
 /*.bckp
 /my_hunter
 .gitignore
+.highscore

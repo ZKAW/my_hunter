@@ -24,6 +24,7 @@ int my_putstr(char const *str);
 int my_strlen(char const *str);
 int my_pow(int nb, int power);
 int my_sqrt(int nb);
+int my_getnbr(char *str);
 char *my_strcpy(char *dest, char const *src);
 char *my_revstr(char *str);
 int my_putstr_err(char const *str);

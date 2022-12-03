@@ -20,6 +20,7 @@ void manage_mouse_click(game_t *game, sfMouseButtonEvent event)
         sfFloatRect rect = sfSprite_getGlobalBounds(tmp->data->sprite);
         if (sfFloatRect_contains(&rect, x, y)) {
             game->score++;
+            set_highscore(game->score);
             remove_from_linked(&game->sprites, tmp->data);
             sfSound_play(game->sounds->suk_death);
             break;

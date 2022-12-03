@@ -31,6 +31,7 @@ SRC = my_pow.c \
 	my_strlowercase.c \
 	my_strcat.c \
 	my_tablen.c \
+	my_getnbr.c \
 	reverse_tab.c \
 	my_strstr.c \
 	my_chartolower.c \
