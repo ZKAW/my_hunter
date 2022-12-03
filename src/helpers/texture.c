@@ -30,7 +30,7 @@ int get_texture_height(sfTexture *texture)
     return (size.y);
 }
 
-sfSprite *create_background()
+sfSprite *create_background(void)
 {
     sfTexture *texture = sfTexture_createFromFile(BACKGROUND_P, NULL);
     sfSprite *sprite = sfSprite_create();

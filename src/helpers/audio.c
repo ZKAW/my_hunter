@@ -32,4 +32,3 @@ void stop_music(game_t *game)
     if (sfMusic_getStatus(game->music) == sfStopped) return;
     sfMusic_stop(game->music);
 }
-
