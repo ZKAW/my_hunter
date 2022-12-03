@@ -6,29 +6,15 @@
 */
 
 #include "../../include/myhunter.h"
+#include <stdlib.h>
 
-sfMusic *load_music(void)
+sounds_t *create_sounds(void)
 {
-    sfMusic *music = sfMusic_createFromFile(MUSIC_P);
-    sfMusic_setLoop(music, sfTrue);
-    sfMusic_setVolume(music, 50);
-    return (music);
-}
+    sounds_t *sounds = malloc(sizeof(sounds_t));
 
-void play_music(game_t *game)
-{
-    if (sfMusic_getStatus(game->music) == sfPlaying) return;
-    sfMusic_play(game->music);
-}
-
-void pause_music(game_t *game)
-{
-    if (sfMusic_getStatus(game->music) == sfPaused) return;
-    sfMusic_pause(game->music);
-}
-
-void stop_music(game_t *game)
-{
-    if (sfMusic_getStatus(game->music) == sfStopped) return;
-    sfMusic_stop(game->music);
+    sounds->game_start = load_sound(GAME_START_P);
+    sounds->game_over = load_sound(GAME_OVER_P);
+    sounds->suk_death = load_sound(SUK_DEATH_P);
+    sounds->music = load_music(MUSIC_P);
+    return (sounds);
 }

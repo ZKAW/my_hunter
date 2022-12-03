@@ -21,7 +21,7 @@ game_t *create_game(void)
     game->background = create_background();
     game->lifebar = create_lifebar();
     game->suk = sfTexture_createFromFile(SUK_P, NULL);
-    game->music = load_music();
+    game->sounds = create_sounds();
     game->lives = NB_LIVES;
     game->scene = 0;
     return (game);
@@ -30,6 +30,7 @@ game_t *create_game(void)
 void render_game(game_t *game)
 {
     play_music(game);
+    resume_all_sounds(game);
     sfRenderWindow_clear(game->window, sfBlack);
     sfRenderWindow_drawSprite(game->window, game->background, NULL);
     spawn_sprites(game);
@@ -46,6 +47,7 @@ void restart_game(game_t *game)
     game->scene = 0;
     destroy_sprites(game);
     stop_music(game);
+    stop_all_sounds(game);
     display_game(game);
 }
 

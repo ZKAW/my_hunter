@@ -16,6 +16,9 @@
     #define BACKGROUND_P "assets/images/background.png"
     #define FONT_P "assets/fonts/font.ttf"
     #define MUSIC_P "assets/sounds/music.ogg"
+    #define GAME_START_P "assets/sounds/game_start.ogg"
+    #define GAME_OVER_P "assets/sounds/game_over.ogg"
+    #define SUK_DEATH_P "assets/sounds/suk_death.ogg"
 
 typedef struct sprite_t {
     sfSprite *sprite;
@@ -47,6 +50,13 @@ typedef struct lifebar_t {
     int size;
 } lifebar_t;
 
+typedef struct sounds_t {
+    sfSound *suk_death;
+    sfSound *game_start;
+    sfSound *game_over;
+    sfMusic *music;
+} sounds_t;
+
 typedef struct game_t {
     sfRenderWindow *window;
     sfSprite *background;
@@ -55,7 +65,7 @@ typedef struct game_t {
     sfEvent event;
     sfClock *clock;
     linked_t *sprites;
-    sfMusic *music;
+    sounds_t *sounds;
     float spawn_time;
     int score;
     int lives;
@@ -101,9 +111,15 @@ void display_game_over(game_t *game);
 void destroy_sprites(game_t *game);
 void init_quit(game_t *game);
 void restart_game(game_t *game);
-sfMusic *load_music(void);
+sfMusic *load_music(char *path);
+sfSound *load_sound(char *path);
 void play_music(game_t *game);
 void pause_music(game_t *game);
 void stop_music(game_t *game);
+sounds_t *create_sounds(void);
+void play_sound(sfSound *sound);
+void pause_all_sounds(game_t *game);
+void resume_all_sounds(game_t *game);
+void stop_all_sounds(game_t *game);
 
 #endif /* !my_hunter_H_ */

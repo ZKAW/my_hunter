@@ -16,6 +16,7 @@
 void display_main_menu(game_t *game)
 {
     game->scene = 0;
+    stop_all_sounds(game);
     sfRenderWindow_clear(game->window, sfBlack);
     display_text(game->window, "KILL THE SUK",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100}, 85);
@@ -28,14 +29,21 @@ void display_main_menu(game_t *game)
 
 void display_game(game_t *game)
 {
+    if (game->scene != 1)
+        play_sound(game->sounds->game_start);
+
     game->scene = 1;
     render_game(game);
 }
 
 void display_pause_menu(game_t *game)
 {
+    if (game->scene == 1) {
+        sfSound_stop(game->sounds->game_start);
+    }
     game->scene = 2;
     pause_music(game);
+    pause_all_sounds(game);
     sfRenderWindow_clear(game->window, sfBlack);
     display_text(game->window, "PAUSE",
                 (sfVector2f) {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100}, 100);

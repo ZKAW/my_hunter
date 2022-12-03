@@ -21,10 +21,12 @@ int my_hunter(void)
             analyse_events(game, event);
 
         handle_scene[game->scene](game);
-
         if (game->scene == 4) break;
-        if ((game->window == NULL || game->lives <= 0) && (game->scene == 1))
+        if ((game->window == NULL || game->lives <= 0) && (game->scene == 1)) {
+            stop_all_sounds(game);
+            play_sound(game->sounds->game_over);
             game->scene = 3;
+        }
 
         sfRenderWindow_display(game->window);
     }

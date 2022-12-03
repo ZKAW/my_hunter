@@ -15,5 +15,7 @@
     #define NB_LIVES 3
     #define SCREEN_WIDTH 1920
     #define SCREEN_HEIGHT 1080
+    #define MUSIC_VOLUME 65
+    #define SOUND_VOLUME 100
 
 #endif /* !SETTINGS_H_ */

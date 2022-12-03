@@ -20,6 +20,8 @@ SRC	= src/main.c \
 	src/helpers/lifebar.c \
 	src/helpers/utils.c \
 	src/helpers/scenes.c \
+	src/helpers/music.c \
+	src/helpers/sound.c \
 	src/helpers/audio.c \
 
 OBJ	= $(SRC:.c=.o)
