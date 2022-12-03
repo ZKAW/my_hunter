@@ -22,16 +22,15 @@ int my_hunter(void)
 
         handle_scene[game->scene](game);
         display_cursor(game);
+
         if (game->scene == 4) break;
         if ((game->window == NULL || game->lives <= 0) && (game->scene == 1)) {
             stop_all_sounds(game);
             sfSound_play(game->sounds->game_over);
             game->scene = 3;
         }
-
         sfRenderWindow_display(game->window);
     }
     destroy_game(game);
-
     return (0);
 }
