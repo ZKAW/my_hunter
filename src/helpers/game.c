@@ -54,8 +54,8 @@ void restart_game(game_t *game)
     game->score_str[0] = '0';
     game->score_str[1] = '\0';
     game->highscore = get_highscore();
-    game->clock = sfClock_create();
-    game->spawn_time = 0;
+    game->spawn_time = -10;
+    sfClock_restart(game->clock);
     destroy_sprites(game);
     stop_music(game);
     stop_all_sounds(game);
