@@ -24,7 +24,7 @@ int my_hunter(void)
         if (game->scene == 4) break;
         if ((game->window == NULL || game->lives <= 0) && (game->scene == 1)) {
             stop_all_sounds(game);
-            play_sound(game->sounds->game_over);
+            sfSound_play(game->sounds->game_over);
             game->scene = 3;
         }
 

@@ -22,7 +22,7 @@ SRC	= src/main.c \
 	src/helpers/scenes.c \
 	src/helpers/music.c \
 	src/helpers/sound.c \
-	src/helpers/audio.c \
+	src/helpers/destroy.c \
 
 OBJ	= $(SRC:.c=.o)
 

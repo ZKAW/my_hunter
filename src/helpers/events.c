@@ -21,7 +21,7 @@ void manage_mouse_click(game_t *game, sfMouseButtonEvent event)
         if (sfFloatRect_contains(&rect, x, y)) {
             game->score++;
             remove_from_linked(&game->sprites, tmp->data);
-            play_sound(game->sounds->suk_death);
+            sfSound_play(game->sounds->suk_death);
             break;
         }
         tmp = tmp->next;

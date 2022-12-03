@@ -30,7 +30,7 @@ void display_main_menu(game_t *game)
 void display_game(game_t *game)
 {
     if (game->scene != 1)
-        play_sound(game->sounds->game_start);
+        sfSound_play(game->sounds->game_start);
 
     game->scene = 1;
     render_game(game);

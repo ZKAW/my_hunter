@@ -66,27 +66,3 @@ void spawn_sprites(game_t *game)
         game->spawn_time = time_s;
     }
 }
-
-void destroy_outside_sprites(game_t *game)
-{
-    linked_t *tmp_sprites = game->sprites;
-    while (tmp_sprites != NULL) {
-        if (tmp_sprites->data->pos.x > get_window_width(game->window)) {
-            remove_from_linked(&game->sprites, tmp_sprites->data);
-            game->lives--;
-            tmp_sprites = game->sprites;
-            continue;
-        }
-        tmp_sprites = tmp_sprites->next;
-    }
-}
-
-void destroy_sprites(game_t *game)
-{
-    linked_t *tmp_sprites = game->sprites;
-    while (tmp_sprites != NULL) {
-        remove_from_linked(&game->sprites, tmp_sprites->data);
-        tmp_sprites = game->sprites;
-    }
-    game->sprites = NULL;
-}

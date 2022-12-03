@@ -50,20 +50,3 @@ void restart_game(game_t *game)
     stop_all_sounds(game);
     display_game(game);
 }
-
-void destroy_game(game_t *game)
-{
-    game->scene = 4;
-    if (game == NULL)
-        return;
-    if (game->clock != NULL)
-        sfClock_destroy(game->clock);
-    if (game->window != NULL)
-        sfRenderWindow_destroy(game->window);
-    if (game->sprites == NULL || game->sprites->data == NULL)
-        return;
-    if (game->sprites->data->sprite != NULL)
-        sfSprite_destroy(game->sprites->data->sprite);
-    if (game->sprites->data->texture != NULL)
-        sfTexture_destroy(game->sprites->data->texture);
-}
