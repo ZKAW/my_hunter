@@ -14,8 +14,8 @@ void display_help(void)
     my_putstr("\tInspired by the famous \"Duck Hunt\" game.\n");
     my_putstr("\tYou have to shoot the evil");
     my_putstr(" Suk before they reach the paradise.\n");
-    my_putstr(" of the screen.\n");
     my_putstr("\tYou have 3 lives.\n");
+    my_putstr("\tThe difficulty (speed and spawn rate) increases with time.\n");
     my_putstr("INPUT:\n");
     my_putstr("\tMove the crosshair with the mouse.\n");
     my_putstr("\tLeft click to shoot.\n");
