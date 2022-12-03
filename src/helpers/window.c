@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myhunter.h"
+#include <stdlib.h>
 
 sfRenderWindow *create_window(void)
 {

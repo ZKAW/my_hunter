@@ -25,6 +25,7 @@ sounds_t *create_sounds(void)
     sounds->game_start = load_sound(GAME_START_P);
     sounds->game_over = load_sound(GAME_OVER_P);
     sounds->suk_death = load_sound(SUK_DEATH_P);
+    sounds->hit = load_sound(HIT_P);
     sounds->music = load_music(MUSIC_P);
     return (sounds);
 }

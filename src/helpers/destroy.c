@@ -47,6 +47,7 @@ void destroy_outside_sprites(game_t *game)
         if (tmp_sprites->data->pos.x > get_window_width(game->window)) {
             remove_from_linked(&game->sprites, tmp_sprites->data);
             game->lives--;
+            sfSound_play(game->sounds->hit);
             tmp_sprites = game->sprites;
             continue;
         }

@@ -10,16 +10,7 @@
     #include <SFML/Audio.h>
     #include <SFML/Graphics.h>
     #include "settings.h"
-
-    #define SUK_P "assets/sprites/suk_sprite.png"
-    #define LIFE_BAR_P "assets/sprites/life_bar.png"
-    #define BACKGROUND_P "assets/images/background.png"
-    #define FONT_P "assets/fonts/font.ttf"
-    #define MUSIC_P "assets/sounds/music.ogg"
-    #define GAME_START_P "assets/sounds/game_start.ogg"
-    #define GAME_OVER_P "assets/sounds/game_over.ogg"
-    #define SUK_DEATH_P "assets/sounds/suk_death.ogg"
-    #define CURSOR_P "assets/images/cursor.png"
+    #include "assets.h"
 
 typedef struct sprite_t {
     sfSprite *sprite;
@@ -56,6 +47,7 @@ typedef struct sounds_t {
     sfSound *suk_death;
     sfSound *game_start;
     sfSound *game_over;
+    sfSound *hit;
     sfMusic *music;
 } sounds_t;
 
