@@ -15,8 +15,6 @@ int my_put_nbr(int nb);
 int my_put_nbr_unsigned(unsigned int nb);
 int my_putnbr_base_long(long nbr, char const *base);
 int my_doublelen(double nb);
-void my_put_double(double nb, int precision);
-void my_put_double_nt(double nb);
 void my_put_scientific_double(double nb, int is_maj, int precision);
 void my_put_scientific_double_nt(double nb, int is_maj);
 int my_longlen(long value);

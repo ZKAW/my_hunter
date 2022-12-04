@@ -22,7 +22,6 @@ SRC = my_pow.c \
 	count_nbr_digits.c \
 	my_round.c \
 	my_longlen.c \
-	my_put_double.c \
 	my_put_float.c \
 	my_put_hexa.c \
 	my_doublelen.c \
@@ -35,20 +34,6 @@ SRC = my_pow.c \
 	reverse_tab.c \
 	my_strstr.c \
 	my_chartolower.c \
-	my_printf/workers/flags/base.c \
-	my_printf/workers/flags/string.c \
-	my_printf/workers/flags/unsigned.c \
-	my_printf/workers/flags/double.c \
-	my_printf/workers/flags/other.c \
-	my_printf/workers/subflags/format.c \
-	my_printf/workers/parser/handler.c \
-	my_printf/workers/parser/scrapper.c \
-	my_printf/helpers/is_nbr_positive.c \
-	my_printf/helpers/base_prefix.c \
-	my_printf/helpers/errors.c \
-	my_printf/helpers/get_length.c \
-	my_printf/helpers/get_length2.c \
-	my_printf/my_printf.c
 
 OBJ = $(SRC:.c=.o)
 NAME = libmy.a
@@ -62,7 +47,6 @@ $(NAME): $(OBJ)
 	cp $(NAME) ../$(NAME)
 	mkdir -p ../../include
 	cp $(NAME_H) ../../include/$(NAME_H)
-	cp my_printf/include/my_printf.h ../../include/my_printf.h
 
 clean:
 	rm -f $(OBJ)
