@@ -19,18 +19,3 @@ int my_intlen(int value)
 
     return len;
 }
-
-int my_intlen_unsigned(unsigned int value)
-{
-    int len = 0;
-
-    if (value == 0)
-        return (1);
-
-    while (value) {
-        len++;
-        value = value / 10;
-    }
-
-    return len;
-}
