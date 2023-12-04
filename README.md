@@ -4,6 +4,10 @@
 Evil Suk are trying to take over heaven.
 You are the only one who can stop them. Kill them all!
 
+## Disclaimer
+Never copy paste a repo, this will result in a -42.
+You can use this repo as a source of inspiration, but you should not copy paste it.
+
 ## Info
 Grade: A* (100%)
 
